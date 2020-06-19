@@ -23,6 +23,7 @@ services:
     volumes:
       - 'MQTT-data:/mosquitto/data'
       - 'MQTT-log:/mosquitto/log'
+      - 'nginx-data:/etc/letsencrypt'
     ports:
       - "1883:1883"
     restart: always

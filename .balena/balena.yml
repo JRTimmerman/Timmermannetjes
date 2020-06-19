@@ -3,15 +3,15 @@ build-secrets:
     nginx:
       - source: dhparam.pem
         dest: dhparam.pem
-    ddclient:
-      - source: ddclient.conf
-        dest: ddclient.conf
+#    ddclient:
+#      - source: ddclient.conf
+#        dest: ddclient.conf
 build-variables:
   services:
     nginx:
-      - REPO_ZIP_URL=
-      - REPO_NAME=
-      - CERTBOT_MAIL=
-      - CERTBOT_DOMAIN_1=
-      - CERTBOT_DOMAIN_2=
-      - CERTBOT_CERT_NAME=
+      - REPO_ZIP_URL='https://github.com/JRTimmerman/Timmermannetjes'
+      - REPO_NAME=Timmermannetjes
+      - CERTBOT_MAIL=jeroen@timmermannetjes.nl
+      - CERTBOT_DOMAIN_1=local.timmermannetjes.nl
+      - CERTBOT_DOMAIN_2=timmermannetjes.nl
+      - CERTBOT_CERT_NAME=local.timmermannetjes.nl

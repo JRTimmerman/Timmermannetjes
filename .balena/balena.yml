@@ -13,5 +13,5 @@ build-variables:
       - REPO_NAME=Timmermannetjes
       - CERTBOT_MAIL=jeroen@timmermannetjes.nl
       - CERTBOT_DOMAIN_1=local.timmermannetjes.nl
-      - CERTBOT_DOMAIN_2=timmermannetjes.nl
+      - CERTBOT_DOMAIN_2=website.timmermannetjes.nl
       - CERTBOT_CERT_NAME=local.timmermannetjes.nl

@@ -1,0 +1,7 @@
+3.0 - 19-6-2020
+- MQTT including
+  - port 1083 for internal traffic
+  - port 8883 for external traffic
+2.0
+- Nginx + CertBot and certificate updates
+- Basic MQTT port 1083

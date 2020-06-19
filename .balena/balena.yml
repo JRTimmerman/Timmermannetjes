@@ -9,7 +9,7 @@ build-secrets:
 build-variables:
   services:
     nginx:
-      - REPO_ZIP_URL=https://github.com/JRTimmerman/Timmermannetjes
+      - REPO_ZIP_URL=https://github.com/JRTimmerman/Timmermannetjes/archive/master.zip
       - REPO_NAME=Timmermannetjes
       - CERTBOT_MAIL=jeroen@timmermannetjes.nl
       - CERTBOT_DOMAIN_1=local.timmermannetjes.nl

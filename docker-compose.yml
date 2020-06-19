@@ -3,6 +3,8 @@ version: '2.1'
 volumes:
   nginx-data:
   nginx-logs:
+  MQTT-data:
+  MQTT-log:
 
 services:
   nginx:
@@ -16,6 +18,14 @@ services:
     ports:
       - "80:80"
       - "443:443"
+  MQTT:
+    build: MQTT
+    volumes:
+      - 'MQTT-data:/mosquitto/data'
+      - 'MQTT-log:/mosquitto/log'
+    ports:
+      - "1883:1883"
+    restart: always
 #  ddclient:
 #    build: ./ddclient
 #    restart: 'always'
@@ -41,4 +51,3 @@ services:
 #      - VIRTUALIZATION=${VIRTUALIZATION}
 #    depends_on:
 #      - nginx
-  

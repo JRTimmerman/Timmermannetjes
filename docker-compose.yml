@@ -26,6 +26,7 @@ services:
       - 'nginx-data:/etc/letsencrypt'
     ports:
       - "1883:1883"
+      - "8883:8883"
     restart: always
 #  ddclient:
 #    build: ./ddclient

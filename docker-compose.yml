@@ -5,6 +5,8 @@ volumes:
   nginx-logs:
   MQTT-data:
   MQTT-log:
+  nodered-data:
+  nodered-log:
 
 services:
   nginx:
@@ -18,6 +20,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+#MQTT
   MQTT:
     build: MQTT
     volumes:
@@ -27,7 +30,18 @@ services:
     ports:
       - "1883:1883"
       - "8883:8883"
-    restart: always
+    restart: unless-stopped
+
+#Nodered
+  nodered:
+    build: nodered
+    volumes:
+      - 'nodered-data:/data'
+    ports:
+      - "1880:1880"
+    depends_on:
+      - MQTT
+    restart: unless-stopped
 #  ddclient:
 #    build: ./ddclient
 #    restart: 'always'

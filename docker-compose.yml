@@ -36,7 +36,11 @@ services:
   nodered:
     build: nodered
     volumes:
+<<<<<<< HEAD
       - 'nodered-data:/data'
+=======
+      - 'nodered-data:/mnt/data'
+>>>>>>> 8cb13602656c5579b2f980ba050ba3ca467b2a20
     ports:
       - "1880:1880"
     depends_on:

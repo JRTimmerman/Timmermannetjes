@@ -5,6 +5,11 @@ volumes:
   nginx-logs:
   MQTT-data:
   MQTT-log:
+  nodered-data:
+  nodered-log:
+  MariaDB-data:
+  MariaDB-log:
+    
 
 services:
   nginx:
@@ -18,6 +23,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+#MQTT
   MQTT:
     build: MQTT
     volumes:
@@ -27,7 +33,27 @@ services:
     ports:
       - "1883:1883"
       - "8883:8883"
-    restart: always
+    restart: unless-stopped
+
+#Nodered
+  nodered:
+    build: nodered
+    volumes:
+<<<<<<< HEAD
+      - 'nodered-data:/data'
+=======
+      - 'nodered-data:/mnt/data'
+>>>>>>> 8cb13602656c5579b2f980ba050ba3ca467b2a20
+    ports:
+      - "1880:1880"
+    depends_on:
+      - MQTT
+    restart: unless-stopped
+
+#MariaDB
+  MariaDB:
+    build: MariaDB
+
 #  ddclient:
 #    build: ./ddclient
 #    restart: 'always'

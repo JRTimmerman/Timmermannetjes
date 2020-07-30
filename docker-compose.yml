@@ -36,7 +36,6 @@ services:
 #Nodered
   nodered:
     build: nodered
-    privileged: true
     volumes:
       - 'nodered-data:/data'
     ports:

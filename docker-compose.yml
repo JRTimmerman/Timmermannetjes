@@ -7,12 +7,7 @@ volumes:
   MQTT-log:
   nodered-data:
   nodered-log:
-<<<<<<< HEAD
-  PHPMyadmin-data:
-  PHPMyadmin-log:
 
-=======
->>>>>>> 43cff31d410f5538687c374b15643f3edec0fcbe
 
 services:
   nginx:
@@ -41,54 +36,15 @@ services:
 #Nodered
   nodered:
     build: nodered
+    privileged: true
     volumes:
-<<<<<<< HEAD
       - 'nodered-data:/data'
-=======
-<<<<<<< HEAD
-      - 'nodered-data:/data'
-=======
-      - 'nodered-data:/mnt/data'
->>>>>>> 8cb13602656c5579b2f980ba050ba3ca467b2a20
->>>>>>> 43cff31d410f5538687c374b15643f3edec0fcbe
     ports:
       - "1880:1880"
     depends_on:
       - MQTT
     restart: unless-stopped
-<<<<<<< HEAD
-
-#MPHPMyadmin
-  PHPMyadmin:
-    build: PHPMyadmin
 
 #mariaDB
   MariaDB:
     build: MariaDB
-=======
-#  ddclient:
-#    build: ./ddclient
-#    restart: 'always'
-#  netdata:
-#    build: ./netdata
-#    pid: "host"
-#    ports:
-#      - 19999:19999
-#    network_mode: host
-#    cap_add:
-#      - SYS_PTRACE
-#    security_opt:
-#      - apparmor:unconfined
-#    privileged: true
-#    labels:
-#      io.balena.features.sysfs: '1'
-#      io.balena.features.procfs	: '1'
-#      io.balena.features.balena-socket: '1'
-#      io.resin.features.kernel-modules: '1'
-#      io.resin.features.firmware: '1'
-#    environment:
-#      - DOCKER_USR=root
-#      - VIRTUALIZATION=${VIRTUALIZATION}
-#    depends_on:
-#      - nginx
->>>>>>> 43cff31d410f5538687c374b15643f3edec0fcbe

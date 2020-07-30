@@ -38,6 +38,8 @@ services:
     build: nodered
     volumes:
       - 'nodered-data:/data'
+    device:
+      - /dev/ttyUSB0:/dev/P1
     privileged: true
     ports:
       - "1880:1880"

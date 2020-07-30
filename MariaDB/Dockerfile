@@ -1,1 +1,1 @@
-FROM arm32v6/mariaDB
+FROM yobasystems/alpine-mariadb:arm32v7

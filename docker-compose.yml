@@ -7,7 +7,9 @@ volumes:
   MQTT-log:
   nodered-data:
   nodered-log:
-
+  dsmrdb-localtime:
+  dsmrdb-data:
+  dsmr-backup:
 
 services:
   nginx:
@@ -50,3 +52,42 @@ services:
 #mariaDB
   MariaDB:
     build: MariaDB
+
+  dsmrdb:
+    image: postgres:10.5-alpine
+    container_name: dsmrdb
+    restart: always
+    volumes:
+      - 'dsmrdb-localtime:/etc/localtime:ro'
+      - 'dsmrdb-data:/var/lib/postgresql/data'
+    environment:
+      - TZ=Europe/Amsterdam
+      - PG_TZ=Europe/Amsterdam
+      - POSTGRES_USER=dsmrreader
+      - POSTGRES_PASSWORD=dsmrreader
+      - POSTGRES_DB=dsmrreader
+
+  dsmr:
+#    build: .
+    image: xirixiz/dsmr-reader-docker:test-latest
+    container_name: dsmr
+    depends_on:
+      - dsmrdb
+    cap_add:
+      - NET_ADMIN
+    links:
+      - dsmrdb
+    restart: always
+    volumes:
+      - dsrmdb-localtime:/etc/localtime:ro
+      - dsmr-backup:/dsmr/backups
+    environment:
+      - TZ=Europe/Amsterdam
+      - VIRTUAL_HOST=localhost
+      - SD_AUTOSTART_MQTT=false
+      - SD_AUTORESTART_MQTT=false
+    ports:
+      - 7777:80
+      - 7779:443
+    devices:
+      - /dev/ttyUSB0:/dev/

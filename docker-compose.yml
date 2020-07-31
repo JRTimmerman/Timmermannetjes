@@ -79,8 +79,8 @@ services:
       - dsmrdb
     restart: always
     volumes:
-      - dsrmdb-localtime:/etc/localtime:ro
-      - dsmr-backup:/dsmr/backups
+      - 'dsrmdb-localtime:/etc/localtime:ro'
+      - 'dsmr-backup:/dsmr/backups'
     environment:
       - TZ=Europe/Amsterdam
       - VIRTUAL_HOST=localhost

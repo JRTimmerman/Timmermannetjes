@@ -38,28 +38,14 @@ services:
     volumes:
       - 'nodered-data:/data'
     devices:
-<<<<<<< HEAD
       - '/dev/ttyUSB0:/dev/ttyUSB0'
 #    group-add:
 #      - 'dialout'
     environment:
       - UDEV=1
 #    privileged: true
-=======
-      - '/dev:/dev'
-    environment:
-      - UDEV=1
-    privileged: true
->>>>>>> e1aed359ace875b9a9f12bc5fde527c9ddf43523
     ports:
       - "1880:1880"
     depends_on:
       - MQTT
     restart: unless-stopped
-<<<<<<< HEAD
-=======
-
-#mariaDB
-  MariaDB:
-    build: MariaDB
->>>>>>> e1aed359ace875b9a9f12bc5fde527c9ddf43523

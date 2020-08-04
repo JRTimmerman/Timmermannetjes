@@ -7,6 +7,7 @@ volumes:
   MQTT-log:
   nodered-data:
   nodered-log:
+  sense-data:
 
 services:
   nginx:
@@ -49,3 +50,29 @@ services:
     depends_on:
       - MQTT
     restart: unless-stopped
+#influxdb
+  influxdb:
+    restart: always
+    build: ./influxdb
+    volumes:
+      - 'sense-data:/data'
+#grafana
+  grafana:
+    restart: always
+    build: ./grafana
+    ports:
+      - "8080"
+    volumes:
+      - 'sense-data:/data'
+    environment:
+        - 'HOME_DASHBOARD_UID=balenaSense'
+        - 'GF_PATHS_DATA=/data/grafana'
+        - 'GF_SERVER_HTTP_PORT=8080'
+        - 'GF_SESSION_PROVIDER=memory'
+        - 'GF_AUTH_ANONYMOUS_ENABLED=true'
+#telegraf
+  telegraf:
+    build: ./telegraf
+    restart: always
+    cap_add:
+      - SYS_ADMIN

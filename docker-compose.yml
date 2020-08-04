@@ -7,9 +7,6 @@ volumes:
   MQTT-log:
   nodered-data:
   nodered-log:
-  dsmrdb-localtime:
-  dsmrdb-data:
-  dsmr-backup:
 
 services:
   nginx:
@@ -42,8 +39,8 @@ services:
       - 'nodered-data:/data'
     devices:
       - '/dev/ttyUSB0:/dev/ttyUSB0'
-    group-add:
-      - 'dialout'
+#    group-add:
+#      - 'dialout'
     environment:
       - UDEV=1
 #    privileged: true

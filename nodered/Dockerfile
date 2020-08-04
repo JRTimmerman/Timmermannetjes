@@ -1,4 +1,4 @@
-FROM nodered/node-red:1.1.2-12-minimal
+FROM nodered/node-red:1.0.2-10-arm32v6
 
 
 

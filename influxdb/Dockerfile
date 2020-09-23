@@ -1,4 +1,4 @@
-FROM arm32v7/influxdb:latest
+FROM arm32v7/influxdb:1.8
 
 # If the following instruction refers to an existing USB drive (e.g. memory stick) connected to the device
 # then it will use that drive for storing in the influxdb otherwise it will use the named volume

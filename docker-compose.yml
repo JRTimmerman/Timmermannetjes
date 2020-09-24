@@ -8,7 +8,6 @@ volumes:
   nodered-data:
   nodered-log:
   influxdb-data:
-  telegraf-conf:
 
 services:
   nginx:
@@ -82,8 +81,6 @@ services:
     environment:
        - interval=60s
        - flush_interval=60s
-    volumes:
-      - 'telegraf-conf:/etc/telegraf'
   grafana:
     build: grafana
     ports:

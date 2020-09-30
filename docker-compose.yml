@@ -8,6 +8,9 @@ volumes:
   nodered-data:
   nodered-log:
   influxdb-data:
+  grafana-data:
+  grafana-logs:
+  grafana-users:
 
 services:
   nginx:
@@ -88,3 +91,7 @@ services:
     depends_on:
        - influxdb
     restart: unless-stopped
+    volumes:
+      - 'grafana-data:/var/lib/grafana'
+      - 'grafana-users:/usr/share/grafana'
+      - 'grafana-logs:/var/log/grafana'
